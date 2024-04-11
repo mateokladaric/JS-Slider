@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slider</title>
+        <link rel="stylesheet" href="index.css">
+        <style>
+            .active {
+                background-color: #000 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="slider" class="h-screen overflow-hidden relative">
+            <div id="slider-holder" class="flex absolute transition-all">
+                <div class="h-screen w-screen relative overflow-hidden">
+                    <div class="h-[95vh] w-[95vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute z-10" style="background-image: url(https://images.unsplash.com/photo-1549778399-f94fd24d4697?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: contain;background-repeat:no-repeat;"></div>
+                    <div class="h-[120vh] w-[120vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style="background-image: url(https://images.unsplash.com/photo-1549778399-f94fd24d4697?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: cover;background-repeat:no-repeat;filter:blur(10px)"></div>
+                </div>
+                <div class="h-screen w-screen relative overflow-hidden">
+                    <div class="h-[95vh] w-[95vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute z-10" style="background-image: url(https://images.unsplash.com/photo-1548602088-9d12a4f9c10f?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: contain;background-repeat:no-repeat;"></div>
+                    <div class="h-[120vh] w-[120vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style="background-image: url(https://images.unsplash.com/photo-1548602088-9d12a4f9c10f?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: cover;background-repeat:no-repeat;filter:blur(10px)"></div>
+                </div>
+                <div class="h-screen w-screen relative overflow-hidden">
+                    <div class="h-[95vh] w-[95vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute z-10" style="background-image: url(https://images.unsplash.com/photo-1515674744565-0d7112cd179a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: contain;background-repeat:no-repeat;"></div>
+                    <div class="h-[120vh] w-[120vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style="background-image: url(https://images.unsplash.com/photo-1515674744565-0d7112cd179a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: cover;background-repeat:no-repeat;filter:blur(10px)"></div>
+                </div>
+                <div class="h-screen w-screen relative overflow-hidden">
+                    <div class="h-[95vh] w-[95vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute z-10" style="background-image: url(https://images.unsplash.com/photo-1550164682-2927e311a4fe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: contain;background-repeat:no-repeat;"></div>
+                    <div class="h-[120vh] w-[120vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style="background-image: url(https://images.unsplash.com/photo-1550164682-2927e311a4fe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-position: center;background-size: cover;background-repeat:no-repeat;filter:blur(10px)"></div>
+                </div>
+            </div>
+            <div id="slider-count-holder" class="z-20 flex absolute transition-all items-center top-full -translate-y-full w-screen justify-center -my-9">
+            </div>
+            <button id="prev" class="absolute left-0 top-1/2 text-white bg-[rgba(32,32,32,0.4)] rounded-full text-xl p-5 font-bold"><</button>
+            <button id="next" class="absolute left-full top-1/2 text-white bg-[rgba(32,32,32,0.4)] rounded-full text-xl p-5 font-bold -translate-x-full">></button>
+        </div>
+        <script>
+            const slider = document.getElementById('slider');
+            const sliderHolder = document.getElementById('slider-holder');
+            const sliderNav = document.getElementById('slider-nav');
+            const prev = document.getElementById('prev');
+            const next = document.getElementById('next');
+            const sliderCountHolder = document.getElementById('slider-count-holder');
+
+            var sliderValue = 0
+            var sliderMaxValue = (sliderHolder.children.length - 1) * -100;
+
+            for (let i = 0; i < sliderHolder.children.length; i++) {
+                const sliderCount = document.createElement('div');
+                sliderCount.classList.add('w-4', 'h-4', 'rounded-full', 'bg-white', 'mx-1', 'cursor-pointer');
+                sliderCountHolder.appendChild(sliderCount);
+                sliderCount.addEventListener('click', () => {
+                    sliderValue = i * -100;
+                    sliderHolder.style.left = `${sliderValue}%`;
+                    updateCounters();
+                });
+            }
+            
+            function updateCounters() {
+                const sliderCounters = sliderCountHolder.children;
+                for (let i = 0; i < sliderCounters.length; i++) {
+                    if (i * -100 === sliderValue) {
+                        sliderCounters[i].classList.add('active');
+                    } else {
+                        sliderCounters[i].classList.remove('active');
+                    }
+                }
+            }
+            
+            prev.addEventListener('click', () => {
+                sliderValue += 100;
+                if (sliderValue > 0) {
+                    sliderValue = sliderMaxValue;
+                }
+                sliderHolder.style.left = `${sliderValue}%`;
+
+                updateCounters();
+            });
+            next.addEventListener('click', () => {
+                sliderValue -= 100;
+                if (sliderValue < sliderMaxValue) {
+                    sliderValue = 0;
+                }
+                sliderHolder.style.left = `${sliderValue}%`;
+
+                updateCounters();
+            });
+        </script>
+    </body>
+</html>
